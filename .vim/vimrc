@@ -121,3 +121,4 @@ endif
 
 " override plugins settings
 set ttimeoutlen=50
+
