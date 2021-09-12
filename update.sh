@@ -1,6 +1,42 @@
 #!/bin/bash
 
+# directory in which the repo is
 CUR_DIR=/media/antihero/Data/Programming/personal_blog/dotfiles
+
+# apps for which config is to be updated
+declare -a apps=(
+    "alacritty"
+    "picom"
+    "polybar"
+    "rofi"
+    "code"
+    "i3"
+    "neovim"
+    "vim"
+    "zathura"
+    "doom_emacs"
+    "starship"
+    "zsh"
+    "bash"
+)
+
+bash(){
+    rsync -a \
+        ~/.bashrc \
+        "$CUR_DIR"
+}
+
+zsh(){
+    rsync -a \
+        ~/.zshrc \
+        "$CUR_DIR"
+}
+
+starship(){
+    rsync -a \
+        ~/.config/starship.toml \
+        "$CUR_DIR/.config"
+}
 
 i3() {
     rsync -a \
@@ -75,20 +111,6 @@ doom_emacs(){
         ~/.doom.d \
         "$CUR_DIR"
 }
-
-# apps for which config is to be updated
-declare -a apps=(
-    "alacritty"
-    "picom"
-    "polybar"
-    "rofi"
-    "code"
-    "i3"
-    "neovim"
-    "vim"
-    "zathura"
-    "doom_emacs"
-)
 
 if [ ! -d "$CUR_DIR/.config" ]; then
     mkdir "$CUR_DIR/.config"
