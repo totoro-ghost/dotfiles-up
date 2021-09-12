@@ -28,7 +28,7 @@ zathura() {
     mkdir -p "$CUR_DIR/.config/zathura"
     rsync -a \
         ~/.config/zathura \
-        "$CUR_DIR/.config/zathura"
+        "$CUR_DIR/.config"
 }
 
 code() {

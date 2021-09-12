@@ -1,5 +1,5 @@
 {
-    "workbench.colorTheme": "One Dark Pro Darker",
+    "workbench.colorTheme": "Dracula",
     "editor.mouseWheelZoom": true,
     "editor.fontFamily": "'VictorMono Nerd Font', 'JetBrainsMono Nerd Font','Iosevka Nerd Font', 'feather','Material', 'FontAwesome', 'Fantasque Sans Mono', 'Material\\-Design\\-Iconic\\-Font'",
     "editor.suggestSelection": "first",
@@ -217,5 +217,5 @@
     "terminal.explorerKind": "external",
     "terminal.external.linuxExec": "alacritty",
     "workbench.editor.languageDetection": false,
-    "window.zoomLevel": 2
+    "window.zoomLevel": 1
 }
