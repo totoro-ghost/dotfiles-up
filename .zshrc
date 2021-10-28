@@ -220,15 +220,18 @@ if [ -x /usr/bin/dircolors ]; then
     alias la='ls -A'
     alias l='ls -CF'
     alias pip='pip3'
-    alias l='lsd -a'
-    alias ll='lsd -all'
+    alias l='exa'
+    # alias l='lsd -a'
+    # alias ll='lsd -all'
+    alias ll='exa -all'
     alias ..='cd ..'
     alias ...='cd ../..'
-    alias ls='lsd -all'
+    # alias ls='lsd -all'
+    alias ls='exa -all'
     alias mkdir='mkdir -pv'
     alias c='cht.sh --shell'
     alias xo='xdg-open'
-    alias bat='bat --theme=TwoDark'
+    alias bat='batcat --theme=TwoDark'
     export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
     export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
     export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
@@ -260,10 +263,6 @@ bindkey '^e' edit-command-line
 
 ## custom functions
 
-hack(){
-    $HOME/Software/appimage/eDEX-UI-Linux-x86_64.AppImage
-}
-
 fix_monitor(){
     xrandr --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal --output eDP-1-1 --mode 1920x1080 --pos 1920x0 --rotate normal
 }
@@ -281,7 +280,7 @@ ytdlbig(){
 }
 
 pro(){
-    DIR="/media/antihero/Data/Programming/"
+    DIR="/media/totoro/Data/Programming/"
     if [ ! -d "$DIR" ]; then
         return 1
     else
@@ -296,7 +295,7 @@ pro(){
 }
 
 btech(){
-    DIR="/media/antihero/Data/BTECH/"
+    DIR="/media/totoro/Data/BTECH/"
     if [ ! -d "$DIR" ]; then
         return 1
     else
@@ -338,12 +337,6 @@ new_terminal(){
     alacritty --working-directory `xcwd` & disown
 }
 
-# gem files location
-export GEM_HOME=$HOME/.gems
-export PATH=$HOME/.gems/bin:$PATH
-export GRADLE_HOME=/opt/gradle/gradle-7.0
-export PATH=${GRADLE_HOME}/bin:${PATH}
-
 ## auto jump 
 source /usr/share/autojump/autojump.sh
 
@@ -361,10 +354,35 @@ camera_open(){
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-open(){
+o(){
     if [[ "$1" == *".pdf" ]]; then
         zathura "$1" & disown
     fi
 }
 
+vimwiki(){
+    if [ $# -eq 0 ]; then return 1; fi
+    DIR="/media/totoro/Data/Programming/vim-wiki"
+    NO="7"  # no of level the DIR is deep +1, to use with cut, awk takes more time so 
+    if [ ! -d "$DIR" ]; then return 1; fi 
+    CHOICE=$(grep -rnw "$DIR" -e "$1" | cut -d'/' -f$NO | fzf --border | cut -d':' -f1)
+    if [ -z "$CHOICE" ]; then return 1; fi
+    vim "$DIR/$CHOICE"
+}
+
 # zprof
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/totoro/.config/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/totoro/.config/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/totoro/.config/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/totoro/.config/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

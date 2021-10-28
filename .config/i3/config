@@ -1,8 +1,3 @@
-# ----------Some tools you might use------
-# xprop - use to find WM_CLASS
-# xev - capture keypresses
-# ----------------------------------------
-
 ## Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 set $mod_next Mod1
@@ -55,7 +50,7 @@ for_window [class="Conky"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable
 for_window [class="Qtconfig-qt4"] floating enable sticky enable
 for_window [class="Audacious"] no_focus
-for_window [class="copyq"] floating enable, move position center
+for_window [class="copyq"] floating enable, move position centerds
 for_window [class="Ulauncher"] floating enable, move position center
 for_window [class="xpad"] floating enable
 for_window [class="conky"] floating enable
@@ -68,9 +63,10 @@ for_window [class="feh"][title="timetable"] floating enable
 for_window [class="mpv"] floating enable move position center
 for_window [class="vlc" window_type="normal"] floating enable, move position center
 for_window [class="(?i)tint2"] floating enable, move position center
-for_window [class="(?i)lemonbar"] floating enable 
 for_window [class="konsole" title="fkonsole"] floating enable, resize set 600px 400px, move position center
-for_window [class="org-knopflerfish-framework-BundleThread"] floating enable 
+for_window [class="fcitx"] floating enable
+for_window [class="Gthumb"] floating enable
+for_window [class="Screenkey"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -93,20 +89,20 @@ popup_during_fullscreen leave_fullscreen
 # AUTOMATICALLY STARTING APPLICATIONS ON I3 STARTUP
 # exec [--no-startup-id] <command>
 # exec_always [--no-startup-id] <command>
-# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id lxqt-policykit-agent
+exec --no-startup-id lxpolkit
 exec --no-startup-id nm-applet
+# exec --no-startup-id blueman-applet
 exec --no-startup-id copyq
-exec --no-startup-id xfce4-power-manager
 exec --no-startup-id flameshot
-exec --no-startup-id libinput-gestures-setup start
+# exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id libinput-gestures-setup start
 # exec --no-startup-id xpad
-# exec --no-startup-id mpd
-exec_always --no-startup-id pkill wallpaper.sh; $HOME/Scripts/wallpaper.sh
 # exec --no-startup-id $HOME/Scripts/idleshutdown.sh
+exec_always --no-startup-id pkill wallpaper.sh; $HOME/Scripts/wallpaper.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh -compact
 exec_always --no-startup-id $HOME/.config/picom/launch.sh
 exec_always --no-startup-id pkill dunst; dunst
+# exec_always --no-startup-id alacritty -e "vim" "$HOME/Documents/todo_list.md"
 # exec_always i3expod.py -w ~/.wallpaper
 
 # exec_always i3-layouts
@@ -115,52 +111,46 @@ exec_always --no-startup-id pkill dunst; dunst
 # bindcode [--release] [<Group>+][<Modifiers>+]<keycode> command
 
 # apps
-bindsym $mod+F1 exec firefox
-bindsym $mod+F2 exec dolphin
-bindsym $mod+F3 exec --no-startup-id "~/.config/rofi/rofi-screenshot/rofi-screenshot"
-bindsym $mod+slash exec --no-startup-id "~/.config/rofi/rofi-alacritty/rofi-alacritty"
-bindsym $mod_next+d exec --no-startup-id ulauncher
-# bindsym $mod --release exec --no-startup-id ulauncher
+bindsym $mod+F1     exec firefox
+bindsym $mod+F2     exec dolphin
+bindsym $mod+F3     exec --no-startup-id "~/.config/rofi/rofi-screenshot/rofi-screenshot"
+bindsym $mod+slash  exec --no-startup-id "~/.config/rofi/rofi-alacritty/rofi-alacritty"
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return       exec alacritty
 bindsym $mod+Shift+Return exec alacritty --working-directory `xcwd`
-# bindsym $mod+slash exec dolphin; exec notify-send "i3-launch" "File Manager" -i system-file-manager 
-# bindsym $mod+c exec copyq toggle
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 #eww
-bindsym $mod+period exec --no-startup-id "~/.config/eww/launch_eww"
+# bindsym $mod+period exec --no-startup-id "~/.config/eww/launch_eww"
 
 bindsym $mod+t exec --no-startup-id "~/Scripts/ocr/launch.sh"
 
+
 # dmenu scripts
-bindsym $mod+colon exec --no-startup-id "~/Scripts/dmenu/dmplay.sh"
-bindsym $mod+b exec --no-startup-id "~/Scripts/dmenu/dmbookmarks.sh"
-# bindsym $mod_next+d exec --no-startup-id "~/Scripts/dmenu/dmenu.sh"
-bindsym $mod+Shift+b exec --no-startup-id "~/Scripts/dmenu/dmconf.sh"
-bindsym $mod+n exec --no-startup-id "~/Scripts/dmenu/dmsearch.sh"
+bindsym $mod+colon    exec --no-startup-id "~/Scripts/dmenu/dmplay.sh"
+bindsym $mod+b        exec --no-startup-id "~/Scripts/dmenu/dmbookmarks.sh"
+bindsym $mod+Shift+b  exec --no-startup-id "~/Scripts/dmenu/dmconf.sh"
 
 # rofi launchers
-bindsym $mod+i exec --no-startup-id "~/.config/rofi/wmtools/launch.sh"
-bindsym $mod+Shift+i exec --no-startup-id "~/.config/rofi/wmtools/launch2.sh"
-bindsym $mod+d exec --no-startup-id "~/.config/rofi/launchers/launch.sh"
-bindsym $mod+Shift+d exec --no-startup-id "~/.config/rofi/launchers/launch2.sh"
 bindsym $mod+Shift+colon exec --no-startup-id rofimoji --skin-tone neutral --selector-args "-theme '$HOME/.config/rofi/slate.rasi'"
-# bindsym $mod+Shift+colon exec --no-startup-id "~/.config/rofi/emoji/launcher.sh"
-bindsym $mod+apostrophe exec "~/.config/rofi/powermenu/powermenu.sh"
-# bindsym $mod+u exec "~/.config/rofi/applets/applets/util.sh"
-bindsym $mod+u exec "~/.config/rofi/shortcuts/launch.sh"
-bindsym $mod+o exec "~/.config/rofi/rofi-notification/rofi_notif_center.sh"
-bindsym $mod+Tab exec "~/.config/rofi/app-switcher/app-switcher.sh"
+# bindsym $mod+n           exec --no-startup-id "~/.config/rofi/rofi-reddit/launch.sh"
+bindsym $mod+n           exec --no-startup-id "~/.config/rofi/rofi-calc/launch.sh"
+bindsym $mod+apostrophe  exec --no-startup-id "~/.config/rofi/rofi-powermenu/launch.sh"
+bindsym $mod+o           exec --no-startup-id "~/.config/rofi/rofi-notification/rofi_notif_center.sh"
+bindsym $mod+i           exec --no-startup-id "~/.config/rofi/rofi-wmtools/launch.sh"
+bindsym $mod+d           exec --no-startup-id "~/.config/rofi/rofi-launchers/launch.sh"
+bindsym $mod+Shift+d     exec --no-startup-id "~/.config/rofi/rofi-launchers/launch2.sh"
+bindsym $mod+u           exec --no-startup-id "~/.config/rofi/rofi-shortcuts/launch.sh"
+bindsym $mod+Tab         exec --no-startup-id "~/.config/rofi/rofi-app-switcher/launch.sh"
 
 # start the screenshot utility
 # bindsym Print exec --no-startup-id "~/Scripts/basic/screenshot.sh -screen"
 # bindsym $mod+Print --release exec --no-startup-id "~/Scripts/basic/screenshot.sh -select"
-bindsym $mod+Print --release exec --no-startup-id "~/Scripts/basic/screenshot.sh -select_copy"
-bindsym Print exec --no-startup-id flameshot full -p ~/Pictures/Screenshots
+bindsym $mod+Print       --release exec --no-startup-id "~/Scripts/basic/screenshot.sh -select_copy"
+bindsym Print                      exec --no-startup-id flameshot full -p ~/Pictures/Screenshots
 bindsym $mod+Shift+Print --release exec --no-startup-id flameshot gui -p ~/Pictures/Screenshots
 
 # xkill utility to send kill siginal
@@ -170,9 +160,9 @@ bindsym $mod+Ctrl+x --release exec --no-startup-id notify-send "xkill" "Select a
 bindsym $mod+m exec --no-startup-id polybar-msg cmd toggle
 # bindsym $mod+y exec --no-startup-id xpad --toggle
 
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
 bindsym $mod+Right focus right
 
 bindsym $mod+h focus left
@@ -180,9 +170,9 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
 bindsym $mod+Shift+h move left
@@ -190,14 +180,14 @@ bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-bindsym $mod+Shift+p move workspace to output HDMI-0
-bindsym $mod+p move workspace to output eDP-1-1
+bindsym $mod+Shift+p     move workspace to output HDMI-0
+bindsym $mod+p           move workspace to output eDP-1-1
 bindsym $mod+bracketleft exec --no-startup-id "~/Scripts/i3/swap-ws.py"
 # bindsym $mod+y exec --no-startup-id i3-msg "move position center"
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
-bindsym $mod+grave workspace back_and_forth
+bindsym $mod+grave       workspace back_and_forth
 bindsym $mod+Shift+grave move container to workspace back_and_forth; workspace back_and_forth
 
 # change focus between tiling / floating windows
@@ -211,28 +201,13 @@ bindsym $mod+Shift+s sticky toggle; exec notify-send "i3" "Sticky toggle" -i pre
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad; exec notify-send "i3" "Send to scratchpad" -i preferences-system-windows
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus       scratchpad show
 # bindsym $mod+F11 exec --no-startup-id "~/Scripts/i3/launch.sh"
 bindsym $mod+F12 [class="Firefox"] scratchpad show
-
-# bindsym $mod+g exec --no-startup-id "~/.config/conky/full/launch.sh"
-# bindsym $mod+g exec --no-startup-id killall -s SIGUSR1 i3expod.py
 
 #navigate workspaces next / previous
 # bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
-
-# Workspace names
-# set $ws1 "1"
-# set $ws2 "2"
-# set $ws3 "3"
-# set $ws4 "4"
-# set $ws5 "5"
-# set $ws6 "6"
-# set $ws7 "7"
-# set $ws8 "8"
-# set $ws9 "9"
-# set $ws10 "10"
 
 set $ws1 "1"
 set $ws2 "2"
@@ -361,8 +336,8 @@ mode "resize" {
 # SETTINGS FOR i3-gaps
 
 # Set inner/outer gaps
-gaps inner 8
-gaps outer 8
+# gaps inner 8
+# gaps outer 8
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -413,88 +388,17 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-
-# i3bar
-# bar {
-#         # i3bar COMMAND
-#         # i3bar_command <command>
-
-#         # Statusline COMMAND
-#         # status_command <command>
-#         # status_command i3status
-#         status_command i3status
-
-#         # DISPLAY MODE
-#         # mode dock|hide|invisible
-#         # hidden_state hide|show
-#         # modifier <Modifier>|none
-
-#         # Bar ID
-#         # id <bar_id>
-
-#         # Position
-#         # position top|bottom
-#         position top
-
-#         # Output(s)
-#         # output primary|nonprimary|<output>
-
-#         # Tray output
-#         # tray_output none|primary|<output>
-
-#         # Tray padding
-#         # tray_padding <px> [px]
-
-#         # Font
-#         # font <font>
-
-#         # Custom separator symbol
-#         # separator_symbol <symbol>
-#         separator_symbol ""
-# 	colors {
-#         background #282a36
-#         statusline #282a36
-#         separator  #f8f8f2
-#         # <colorclass>   <border> <background> <text>
-#         focused_workspace   #282a36 #6272a4  #282a36
-#         active_workspace   $foreground $background $foreground
-#         # inactive_workspace #f8f8f2
-#         urgent_workspace    #282a36 #FF5555  #282a36
-#         binding_mode       #f8f8f2  #282a36 #f8f8f2
-#         }
-# }
-
-# hide/unhide i3-bar
-# bindsym $mod+m bar mode toggle
-
 # SCREEN BRIGHTNESS CONTROLS
-# using xbacklight
-bindsym XF86MonBrightnessUp exec "~/Scripts/basic/brightness-cat.sh -inc"
-bindsym XF86MonBrightnessDown exec "~/Scripts/basic/brightness-cat.sh -dec"
+bindsym XF86MonBrightnessUp   exec "~/Scripts/basic/brightness.sh -inc"
+bindsym XF86MonBrightnessDown exec "~/Scripts/basic/brightness.sh -dec"
 
 # SOUND CONTROLS
-# using pactl in PulseAudio
+bindsym XF86AudioLowerVolume exec --no-startup-id "~/Scripts/basic/volume.sh -dec"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "~/Scripts/basic/volume.sh -inc"
+bindsym XF86AudioMute        exec --no-startup-id "~/Scripts/basic/volume.sh -mute"
+bindsym XF86AudioMicMute     exec --no-startup-id "~/Scripts/basic/mic.sh"
 
-# i3status
-# set $refresh_i3status killall -SIGUSR1 i3status
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +1% && $refresh_i3status; exec notify-send 'volume up'
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -1% && $refresh_i3status; exec notify-send 'volume down'
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status; exec notify-send 'audio mute'
-# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status; exec notify-send 'mic mute'
-
-# normal
-bindsym XF86AudioLowerVolume exec --no-startup-id "~/Scripts/basic/volume-cat.sh -dec"
-bindsym XF86AudioRaiseVolume exec --no-startup-id "~/Scripts/basic/volume-cat.sh -inc"
-bindsym XF86AudioMute exec --no-startup-id "~/Scripts/basic/volume-cat.sh -mute"
-bindsym XF86AudioMicMute exec --no-startup-id "~/Scripts/basic/mic.sh"
-
-# i3 blocks
-# set $refresh_i3blocks pkill -RTMIN+10 i3blocks
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3blocks
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3blocks
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3blocks
-
-## MUSIC CONTROLS - only for cmus
+## MUSIC CONTROLS
 bindsym XF86AudioPlay exec --no-startup-id "~/Scripts/music/play_pause.sh"
 bindsym XF86AudioStop exec --no-startup-id "~/Scripts/music/stop.sh"
 bindsym XF86AudioNext exec --no-startup-id "~/Scripts/music/next.sh"
@@ -507,15 +411,13 @@ client.focused_inactive #44475a #21222c #F8F8F2 #21222c #44475a
 client.unfocused        #44475a #21222c #6272a4 #21222c #282a36
 client.urgent           #44475a #FF5555 #F8F8F2 #FF5555 #FF5555
 client.placeholder      #44475a #282A36 #F8F8F2 #282A36 #44475a
-
 client.background       #F8F8F2
 
-
 # split orientation
-# bindsym $mod+h split h;exec notify-send 'tile horizontally'
-# bindsym $mod+v split v;exec notify-send 'tile vertically'
+bindsym $mod+e split horizontal;exec notify-send 'tile horizontally'
+bindsym $mod+a split vertical;exec notify-send 'tile vertically'
 # bindsym $mod+q split toggle
-bindsym $mod+q split toggle
+# bindsym $mod+q split toggle
 
 # toggle fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle; exec notify-send "i3" "Fullscreen Mode" -i preferences-system-windows
@@ -523,11 +425,8 @@ bindsym $mod+f fullscreen toggle; exec notify-send "i3" "Fullscreen Mode" -i pre
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking; exec notify-send "i3" "Stacking Mode" -i preferences-system-windows
 bindsym $mod+w layout tabbed; exec notify-send "i3" "Tab Mode" -i preferences-system-windows
-bindsym $mod+e layout toggle split;  exec notify-send "i3" "Toggle Split" -i preferences-system-windows
-# bindsym $mod+s layout toggle
+# bindsym $mod+e layout toggle split;  exec notify-send "i3" "Toggle Split" -i preferences-system-windows
+bindsym $mod+q layout toggle
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle; exec notify-send "i3" "Floating on" -i preferences-system-windows
-
-# set $i3l spiral 0.6 to workspace $ws3
-# bindsym $mod+a exec i3l vstack

@@ -24,20 +24,20 @@ format = '[\($state( $progress_current of $progress_total)\)]($style) '
 cherry_pick = "[🍒 PICKING](bold red)"
 
 [git_status]
-conflicted = "🏳"
-ahead = "🏎💨"
-behind = "😰"
-diverged = "😵"
-untracked = "🤷‍"
-stashed = "📦"
-modified = "📝"
+conflicted = " 🏳 "
+ahead = " 🏎💨 "
+behind = " 😰 "
+diverged = " 😵 "
+untracked = " 🤷 ‍"
+stashed = " 📦 "
+modified = " 📝 "
 staged = '[++\($count\)](green)'
-renamed = "👅"
-deleted = "🗑"
+renamed = " ✍️ "
+deleted = " 🗑 "
 
 [hostname]
 ssh_only = false
-format =  "on [catbus](bold red) "
+format =  "on [$hostname](bold red) "
 trim_at = ".companyname.com"
 disabled = false
 
@@ -58,7 +58,7 @@ time_format = "%T"
 [username]
 style_user = "white bold"
 style_root = "black bold"
-format = "[totoro]($style) "
+format = "[$user]($style) "
 disabled = false
 show_always = true
 

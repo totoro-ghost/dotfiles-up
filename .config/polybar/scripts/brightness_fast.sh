@@ -1,4 +1,12 @@
 #!/bin/bash
+#
+# Use: To change the inbulit brightness of the dispay port if it supports that.
+# Dependencies: polybar-msg
+# Description: Script to change the brightness and 
+# Working: it check for the device in /sys/class/backlight
+#  to modify those values without need of sudo you have to add a udev rule
+#  read about it on archwiki(backlight)
+# Author: totoro
 
 CUR_BRI=$(cat /sys/class/backlight/intel_backlight/brightness)
 MAX_BRI=$(cat /sys/class/backlight/intel_backlight/max_brightness)

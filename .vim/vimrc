@@ -4,10 +4,10 @@ filetype plugin indent on  " Load plugins according to detected filetype.
 syntax on                  " Enable syntax highlighting.
 
 set autoindent             " Indent according to previous line.
-set expandtab              " Use spaces instead of tabs.
 set softtabstop =4         " Tab key indents by 4 spaces.
 set shiftwidth  =4         " >> indents by 4 spaces.
 set shiftround             " >> indents to next multiple of 'shiftwidth'.
+set expandtab              " Use spaces instead of tabs.
 
 set backspace   =indent,eol,start  " Make backspace work as you would expect.
 set hidden                 " Switch between buffers without having to save first.
@@ -61,7 +61,7 @@ endif
 " set updatecount =10
 " set undofile
 " set undodir     =$HOME/.vim/files/undo/
-" set viminfo     ='100,n$HOME/.vim/files/info/viminfo
+set viminfo     ='100,n$HOME/.vim/files/info/viminfo
 
 :set mouse=a    "enable mouse support in vim
 call plug#begin('~/.vim/plugged')
@@ -70,12 +70,16 @@ Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
+Plug 'preservim/nerdtree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
 " airline plugin
 let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 let g:onedark_terminal_italics = 1
 " colorscheme
@@ -84,6 +88,14 @@ if (has("autocmd") && !has("gui_running"))
     autocmd!
     let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
     autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
+  augroup END
+endif
+if (has("autocmd") && has("gui_running"))
+  augroup colorset
+    autocmd!
+    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+    let s:background = { "gui": "#1e2127", "cterm": "235", "cterm16": "NONE" }
+    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white, "bg": s:background }) " `bg` will not be styled since there is no `bg` setting
   augroup END
 endif
 colorscheme onedark
@@ -95,9 +107,12 @@ endif
 hi Normal ctermbg=NONE
 
 " gvim settings
-set guifont=Iosevka\ Nerd\ Font\ 20
+set guifont=Iosevka\ Nerd\ Font\ Mono\ 16
 set guioptions-=T
 set guioptions-=m
+set guioptions-=l             "remove scrollbar
+set guioptions-=r             "remove right scroll bar
+set guioptions-=L             "remove scrollbar in vertical split
 set guicursor+=a:blinkon0 "stop cursor blinking in gvim
 
 function! FontSizePlus ()
@@ -122,3 +137,36 @@ endif
 " override plugins settings
 set ttimeoutlen=50
 
+" cursor
+if empty($TMUX)
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+  let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+else
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+  let &t_SR = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=2\x7\<Esc>\\"
+endif
+
+" use double-Esc to completely clear the search buffer
+nnoremap <silent> <Esc><Esc> :let @/ = ""<CR>
+" use space to retain the search buffer and toggle highlighting off/on
+nnoremap <silent> <Space> :set hlsearch!<CR>
+
+" pandoc
+augroup my_markdown
+    autocmd!
+    autocmd FileType markdown nnoremap <buffer><nowait><silent> <F5> :<c-u>silent call system('pandoc '.expand('%:p:S').' -o '.expand('%:p:r:S').'.pdf')<cr>
+augroup END
+
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+" nnoremap <C-f> :NERDTreeFind<CR>
+
+nnoremap <C-f> :Buffers<CR>
+
+" spelling 
+set spell spelllang=en_us
+
+map <Enter> o<ESC>
+map <S-Enter> O<ESC>

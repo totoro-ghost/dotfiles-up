@@ -1,5 +1,6 @@
 local M = {}
 
+local chadrc_config = require("core.utils").load_config()
 M.autopairs = function()
    local present1, autopairs = pcall(require, "nvim-autopairs")
    local present2, autopairs_completion = pcall(require, "nvim-autopairs.completion.cmp")
@@ -15,54 +16,30 @@ M.autopairs = function()
    }
 end
 
-M.autosave = function()
-   -- autosave.nvim plugin is disabled by default
-   local present, autosave = pcall(require, "autosave")
-   if not present then
-      return
-   end
-
-   autosave.setup {
-      enabled = vim.g.auto_save or false, -- takes boolean value from init.lua
-      execution_message = "autosaved at : " .. vim.fn.strftime "%H:%M:%S",
-      events = { "InsertLeave", "TextChanged" },
-      conditions = {
-         exists = true,
-         filetype_is_not = {},
-         modifiable = true,
-      },
-      clean_command_line_interval = 2500,
-      on_off_commands = true,
-      write_all_buffers = false,
+M.better_escape = function()
+   require("better_escape").setup {
+      mapping = chadrc_config.mappings.plugins.better_escape.esc_insertmode,
+      timeout = chadrc_config.plugins.options.esc_insertmode_timeout,
    }
 end
 
-M.better_escape = function()
-   local config = require("core.utils").load_config()
-   vim.g.better_escape_interval = config.options.plugin.esc_insertmode_timeout or 300
-end
-
--- M.blankline = function()
---    vim.g.indentLine_enabled = 1
---    vim.g.indent_blankline_char = "▏"
--- 
---    vim.g.indent_blankline_filetype_exclude = { "help", "terminal", "dashboard", "packer" }
---    vim.g.indent_blankline_buftype_exclude = { "terminal" }
--- 
---    vim.g.indent_blankline_show_trailing_blankline_indent = false
---    vim.g.indent_blankline_show_first_indent_level = false
--- end
-
 M.blankline = function()
-   vim.g.indent_blankline_char_highlight_list = {"IndentOdd", "IndentEven"}
-   vim.g.indent_blankline_space_char_highlight_list = {"IndentOdd", "IndentEven"}
-  
-   -- don't show any characters
-   vim.g.indent_blankline_char = " "
-   vim.g.indent_blankline_space_char = " "
-  
-   -- when using background, the trailing indent is not needed / looks wrong
-   vim.g.indent_blankline_show_trailing_blankline_indent = false
+   require("indent_blankline").setup {
+      indentLine_enabled = 1,
+      char = "▏",
+      filetype_exclude = {
+         "help",
+         "terminal",
+         "dashboard",
+         "packer",
+         "lspinfo",
+         "TelescopePrompt",
+         "TelescopeResults",
+      },
+      buftype_exclude = { "terminal" },
+      show_trailing_blankline_indent = false,
+      show_first_indent_level = false,
+   }
 end
 
 M.colorizer = function()
@@ -102,20 +79,7 @@ M.luasnip = function()
       history = true,
       updateevents = "TextChanged,TextChangedI",
    }
-   require("luasnip/loaders/from_vscode").load()
-end
-
-M.lspkind = function()
-   local present, lspkind = pcall(require, "lspkind")
-   if present then
-      lspkind.init()
-   end
-end
-
-M.neoscroll = function()
-   pcall(function()
-      require("neoscroll").setup()
-   end)
+   require("luasnip/loaders/from_vscode").load { path = { chadrc_config.plugins.options.luasnip.snippet_path } }
 end
 
 M.signature = function()
@@ -129,7 +93,6 @@ M.signature = function()
          hint_enable = true,
          hint_prefix = " ",
          hint_scheme = "String",
-         use_lspsaga = false,
          hi_parameter = "Search",
          max_height = 22,
          max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width

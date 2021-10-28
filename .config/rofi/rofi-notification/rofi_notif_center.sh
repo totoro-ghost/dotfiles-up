@@ -18,18 +18,22 @@ icon=$(echo -n "$raw" | sed -n '4~6p' | while read -r line; do echo "$line"; don
 urgency=$(echo -n "$raw" | sed -n '5~6p')
 timestamp=$(echo -n "$raw" | sed -n '6~6p')
 
+
 ### Create Icon list to parse through with rofi
 while IFS= read -r i; do
     if [[ -f "$i" ]]; then
         full_path="$i\n"
     elif [[ -n "$i" ]]; then
-        incomplete_icon_path=$(fd "$i" "$directory" | head -1)
+        # incomplete_icon_path=$(fd "$i" "$directory" | head -1)
+        incomplete_icon_path=$(find "$directory" -name "$i.svg" | head -1)
         full_path="${incomplete_icon_path}\n"
     else
         full_path="\n"
     fi
     icon_paths_list="${icon_paths_list}${full_path}"
 done <<< "$icon"
+
+
 
 ### Create list of rows that are "active" i.e. low urgency for the -a flag on rofi
 count=0
@@ -42,6 +46,8 @@ while IFS= read -r u; do
     fi
 done <<< "$urgency"
 
+
+
 ### Create list of urgent rows for rofi
 count=0
 while IFS= read -r u; do
@@ -52,6 +58,8 @@ while IFS= read -r u; do
         count=$((count+1))
     fi
 done <<< "$urgency"
+
+
 
 ### Guess icon with appname
 readarray -t app_array < <(echo -en "$appname")
@@ -67,6 +75,7 @@ if $use_appname; then
     done
 fi
 
+
 ### Bold appname
 readarray -t timestamp_array < <(echo -en "$timestamp")
 count=0
@@ -76,6 +85,8 @@ while IFS= read -r a; do
     embolden_app="${embolden_app}${embolden_app:+\n}<b>$app_spaces</b>${timestamp_array[$count]}"
     count=$((count+1))
 done <<< "$appname"
+
+
 
 ### insert embolden appname
 summary_line=0
@@ -87,6 +98,8 @@ for a in "${appname_array[@]}"; do
     summary_line=$((summary_line+2))
     body_line=$((body_line+2))
 done
+
+
 
 ### Insert icon paths
 appname_line=0
@@ -103,14 +116,23 @@ done
 
 echo -ne "$separation"
 
+
 ### Final prep
 separation=$(sed '0~3 s/$/\x0f/g' <(echo -en "$amend"))
 final_rofi=$(sed ':a;/\x0f$/{N;s/\n//;ba}'   <(echo -n "$separation"))
 
+
+
 ### Eventual Final command to be executed
 selection=$(echo -ne "$final_rofi" | rofi -markup-rows -theme ~/.config/rofi/rofi-notification/configNotif.rasi -dmenu -eh 3 -a "$active_list" -u "$urgent_list" -sep '\x0f' -p "Notification Center" -no-fixed-num-lines -lines 8 -i -no-config)
 
+
 echo -ne "$final_rofi"
+
+echo -e "\n\n\t this is it------>\n"
+echo "$selection"
+
+
 
 ### If a notification was selected, delete it from the logs
 if [ -n "$selection" ]; then

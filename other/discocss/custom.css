@@ -1,0 +1,188 @@
+/* Change Only Theme Colors & Custom Font */
+
+.theme-dark {
+    --background-primary: #3b4252;
+    --background-secondary: #2e3440;
+    --background-tertiary: #282c33;
+    --background-secondary-alt: #2e3440;
+    --channeltextarea-background: #4c566a;
+    --interactive-muted: #4c566a;
+    --text-normal: #d8dee9;
+    --header-primary: #eceff4;
+    --interactive-active: #eceff4;
+    --server-radius: 4%;
+    /* --text-muted: transparent; */
+    /* --scrollbar-auto-track: transparent; */
+    /* --scrollbar-auto-thumb: transparent; */
+    /* --scrollbar-auto-scrollbar-color-thumb: transparent; */
+    /* --scrollbar-thin-thumb: transparent; */
+    /* --scrollbar-thin-track: transparent; */
+}
+
+
+/* Force color */
+
+.theme-dark .container-1D34oG {
+    background-color: #3b4252;
+}
+
+.categoryHeader-O1zU94,
+.theme-dark .autocomplete-1vrmpx {
+    background-color: #2e3440;
+}
+
+.theme-dark .selected-1Tbx07 {
+    background-color: #3b4252;
+}
+
+
+/* Fonts */
+
+* {
+    font-family: "Iosevka Nerd Font", "Ubuntu", "VictorMono Nerd Font", "Monofur Nerd Font", "PT Sans", "Noto Sans CJK HK", "Noto Color Emoji", "BlexMono Nerd Font", system-ui, sans-serif !important;
+}
+
+code {
+    font-family: "VictorMono Nerd Font", "Monofur Nerd Font", "BlexMono Nerd Font", "Liberation Mono", monospace !important;
+}
+
+
+/* Hide Inbox Button & Support Button */
+
+
+/*div[aria-label="Inbox"] {
+  display: none
+}*/
+
+a[href="https://support.discord.com"] {
+    display: none
+}
+
+
+/* Round Searchbar */
+
+div[aria-label="Search"] {
+    border-radius: 8px
+}
+
+
+/* Change Color Of Placeholder On Input Bar */
+
+.placeholder-37qJjk.fontSize16Padding-3Wk7zP {
+    color: transparent
+}
+
+
+/* Q's Role Color */
+
+.username-1A8OIy.clickable-1bVtEA[style="color: rgb(153, 45, 34);"] {
+    color: #bf616a !important
+}
+
+
+/* remove the annoying warning */
+
+
+/* <div class="channelNotice-1-XFjC guildMFAWarning-3GEzs8">
+<div class="message-3SOT5P">
+<div>
+<p>This server requires members with moderation powers to have Two-Factor Authentication.</p>
+<p>You cannot take any moderation actions until you enable it.</p>
+</div>
+<button type="button" class="btn-11C5_u button-38aScr lookFilled-1Gx00P colorBrand-3pXr91 sizeMedium-1AC_Sl grow-q77ONN">
+<div class="contents-18-Yxp">Resolve</div>
+</button>
+</div>
+</div> */
+
+.channelNotice-1-XFjC.guildMFAWarning-3GEzs8 {
+    display: none;
+}
+
+
+/* Sqware server and avatar icons everywhere */
+
+[class^="lowerBadge-"]>[class^="numberBadge"] {
+    border-radius: var(--server-radius);
+}
+
+:root .wrapper-3t9DeA foreignObject,
+ :root .callAvatarMask-1SLlRi foreignObject,
+:root .avatarContainer-3CQrif foreignObject,
+ :root .avatarMasked-3y6o4j {
+    mask: none;
+    -webkit-mask: none;
+}
+
+:root .wrapper-3t9DeA,
+ :root .avatar-1BDn8e,
+ :root .profile-1eT9hT .avatarUploaderInner-3UNxY3,
+:root .voiceAvatar-14IynY,
+ :root .avatar-3tNQiO,
+ :root .border-Jn5IOt,
+ :root .avatar-3bWpYy,
+ :root .clickableAvatar-1wQpeh,
+:root .emptyUser-7txhlW,
+ :root .avatar-VxgULZ,
+ :root .wrapper-2QE8vf.ringingIncoming-38YcLn::after,
+:root .wrapper-2QE8vf.ringingOutgoing-mbXhhQ::after,
+ :root .replyAvatar-1K9Wmr,
+ :root .avatarSpeaking-2c8-9i,
+:root .avatar-3Heyg_,
+ :root .avatarContainer-2LLZwy,
+ :root .appAvatar-3bgkQ9 {
+    border-radius: var(--server-radius);
+}
+
+:root .wrapper-25eVIn foreignObject {
+    mask: none;
+    -webkit-mask: none;
+}
+
+:root .wrapperSimple-19ogV2 {
+    overflow: visible;
+}
+
+:root .wrapperSimple-19ogV2,
+ :root .wrapper-25eVIn foreignObject,
+:root .folderIconWrapper-226oVY,
+ :root .folderIconWrapper-1_bOZe,
+:root .expandedFolderBackground-2sPsd-,
+:root .flexChild-faoVW3 .avatarUploaderInner-3UNxY3 {
+    border-radius: var(--server-radius);
+}
+
+:root .iconInactive-98JN5i {
+    border-radius: var(--server-radius);
+}
+
+:root .wrapper-25eVIn foreignObject:hover foreignObject {
+    border-radius: var(--server-radius);
+}
+
+.avatarHint-2A3RNb foreignObject:not(.avatarHintInner-1TvA8u) {
+    mask: unset !important;
+}
+
+
+/* channels list */
+
+
+/* nav .wrapper-3NnKdC .guilds-1SWlCJ {
+    width: 10px !important;
+}
+
+nav .wrapper-3NnKdC .guilds-1SWlCJ:hover {
+    width: 70px !important;
+} */
+
+nav[aria-label="Servers sidebar"] {
+    transition: width 0.5s;
+    /* display: none; */
+    width: 10px;
+}
+
+nav[aria-label="Servers sidebar"]:hover {
+    /* display: none; */
+    width: 70px;
+}

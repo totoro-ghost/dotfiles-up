@@ -71,14 +71,8 @@ bg("PmenuThumb", nord_blue)
 
 -- misc
 fg("LineNr", grey)
-
 fg("NvimInternalError", red)
-
--- inactive statuslines as thin splitlines
-fg("StatusLineNC", line .. " gui=underline")
-
-fg("VertSplit", line)
--- fg_bg("Visual",light_grey, colors.lightbg)
+fg("VertSplit", one_bg2)
 
 if ui.transparency then
    bg("Normal", "NONE")
@@ -102,8 +96,6 @@ fg_bg("DiffModified", nord_blue, "none")
 
 -- Indent blankline plugin
 fg("IndentBlanklineChar", line)
--- fg_bg("IndentOdd", 'NONE', 'NONE')
--- fg_bg("IndentEven", 'NONE', black2)
 
 -- ]]
 

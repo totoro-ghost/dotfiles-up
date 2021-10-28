@@ -30,7 +30,7 @@ if [[ "$crunch_appname" == "Spotify" ]]; then
     crunch_icon=$random_name
 elif [[ "$crunch_appname" == "VLC media player" ]]; then
     crunch_icon="vlc"
-elif [[ "$crunch_appname" == "Calendar" ]] || [[ "$crunch_appname" == "Volume" ]] || [[ "$crunch_appname" == "Brightness" ]] || [[ "$crunch_appname" == "notify-send" ]]; then
+elif [[ "$crunch_appname" == "Calendar" ]] || [[ "$crunch_appname" == "Volume" ]] || [[ "$crunch_appname" == "Brightness" ]]; then
     exit 0
 fi
 

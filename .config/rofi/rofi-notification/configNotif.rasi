@@ -1,6 +1,4 @@
 configuration {
-	display-drun:    " Apps";
-	display-window:  "缾 Windows";
 	show-icons:true;
 	font: "Iosevka Nerd Font 12";
 }
@@ -77,12 +75,12 @@ listview {
 }
 
 element {
-        padding: 10px;
+    padding: 10px;
 }
 
 prompt {
-       padding:     35px 20px 20px 25px;
-       font:        "monospace 18";
+    padding:     35px 20px 20px 25px;
+    font:        "monospace 18";
 }
 
 entry {
@@ -143,11 +141,26 @@ element alternate.active {
     border-radius:    8px;
 	text-color:       @active-foreground;
 }
-element-icon {
-	size: 7ch;
-}
+
 element.selected {
     border-radius: 8px;
 	border:           0 0 0 5px solid;
 	border-color:	    @winbg;
+	   text-color:       inherit;
+}
+
+element-icon selected{
+    size: 64px;
+    border: 0px;
+    background-color: @selected;
+}
+
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+
+element-icon {
+	background-color: inherit;
+	size: 7ch;
 }

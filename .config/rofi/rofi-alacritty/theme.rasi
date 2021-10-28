@@ -7,6 +7,7 @@
   width: 23%;
   height: 40%;
   font: "Iosevka Nerd Font 18";
+  show-icons: false;
 }
 
 window {
@@ -45,7 +46,7 @@ listview {
 
 element {
   border: 0 0 1px 0;
-  padding: 8px;
+  padding: 4px 20px 4px;
 }
 
 element selected {
@@ -53,4 +54,12 @@ element selected {
   border: 0 0 0 4px;
   border-color: #D6ACFF;
   border-radius: 5px;
+}
+
+element-text selected{
+  background-color: #44475a;
+}
+
+element-icon {
+    background-color: inherit;
 }

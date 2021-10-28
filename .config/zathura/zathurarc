@@ -53,8 +53,8 @@ set render-loading-bg           "#d7dae0" # Foreground
 # Recolor mode settings
 #
 
-set recolor-lightcolor          "#282a36" # Background
-set recolor-darkcolor           "#d7dae0" # Foreground
+set recolor-lightcolor          "#282c33" # Background
+set recolor-darkcolor           "#e6efff" # Foreground
 
 #
 # Startup options

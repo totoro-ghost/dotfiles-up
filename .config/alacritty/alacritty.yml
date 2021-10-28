@@ -1,7 +1,7 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 import:
-  - /home/antihero/.config/alacritty/themes/one_dark_pro.yml
+  - /home/totoro/.config/alacritty/themes/one_dark_pro.yml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -192,7 +192,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 18.0
+  size: 16.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.

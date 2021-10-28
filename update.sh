@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # directory in which the repo is
-CUR_DIR=/media/antihero/Data/Programming/personal_blog/dotfiles
+CUR_DIR=/media/totoro/Data/Programming/personal_blog/dotfiles
 
 # apps for which config is to be updated
 declare -a apps=(
@@ -56,6 +56,7 @@ vim() {
         --exclude=doc \
         --exclude=*.swp \
         --exclude=.netrwhist \
+        --exclude=.viminfo \
         ~/.vim \
         "$CUR_DIR"
 }

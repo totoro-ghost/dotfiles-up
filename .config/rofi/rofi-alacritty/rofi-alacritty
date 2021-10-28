@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# rofi theme
-THEME="$HOME/.config/rofi/rofi-alacritty/theme.rasi"
+DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+THEME="$DIR/theme"
 A_THEMES="$HOME/.config/alacritty/themes"
 
 declare -a options=(
@@ -67,7 +67,7 @@ color-scheme() {
 main() {
 
   # Get choice from rofi
-  choice=$(printf '%s\n' "${options[@]}" | rofi -dmenu -i -fuzzy -p "" -theme "$THEME")
+  choice=$(printf '%s\n' "${options[@]}" | rofi -fixed-num-lines 6 -dmenu -i -fuzzy -p "" -theme "$THEME")
 
   # If user has not picked anything, exit
   if [[ -z "${choice// /}" ]]; then

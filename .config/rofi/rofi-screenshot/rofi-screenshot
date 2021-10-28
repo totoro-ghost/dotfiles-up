@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # rofi theme
-THEME="$HOME/.config/rofi/rofi-screenshot/onedark.rasi"
+DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+THEME="$DIR/theme"
 
 get_options() {
   # echo "  Capture Region  Clip"

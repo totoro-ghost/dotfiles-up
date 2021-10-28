@@ -15,7 +15,3 @@ vim.cmd [[ autocmd BufEnter,BufWinEnter,FileType,WinEnter * lua require("core.ut
 -- vim.cmd [[ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif ]]
 -- File extension specific tabbing
 -- vim.cmd [[ autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4 ]]
-
--- set unset padding of terminal
-vim.cmd [[ autocmd BufWinEnter * silent! !alacritty-conf -p 0 ]]
-vim.cmd [[ autocmd VimLeavePre * !alacritty-conf -p 40 ]]

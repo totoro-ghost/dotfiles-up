@@ -1,221 +1,26 @@
 {
-    "workbench.colorTheme": "Dracula",
-    "editor.mouseWheelZoom": true,
-    "editor.fontFamily": "'VictorMono Nerd Font', 'JetBrainsMono Nerd Font','Iosevka Nerd Font', 'feather','Material', 'FontAwesome', 'Fantasque Sans Mono', 'Material\\-Design\\-Iconic\\-Font'",
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "window.menuBarVisibility": "toggle",
-    "python.languageServer": "Default",
-    "editor.renderWhitespace": "boundary",
-    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 4, TabWidth: 4, BreakBeforeBraces: Attach, AllowShortIfStatementsOnASingleLine: true, IndentCaseLabels: false, ColumnLimit: 0, AccessModifierOffset: -4, AllowShortLoopsOnASingleLine: true }",
-    "files.exclude": {
-        "**/.classpath": true,
-        "**/.project": true,
-        "**/.settings": true,
-        "**/.factorypath": true
-    },
-    "cSpell.userWords": [
-        "Nord",
-        "backquote",
-        "kubernetes",
-        "libqtile",
-        "xrandr"
-    ],
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
-    },
-    "workbench.startupEditor": "newUntitledFile",
-    // "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
-    "java.format.settings.url": "~/.config/Code/User/eclipse-java-google-style.xml",
-    // "window.titleBarStyle": "native"
-    "keyboard.dispatch": "keyCode",
-    "liquid.format": true,
-    "files.hotExit": "off",
-    "python.terminal.activateEnvironment": false,
-    "java.imports.gradle.wrapper.checksums": [
-        {
-            "sha256": "2cae31aaabe2b362438e10dce5538f9a554e183056485df883f45aee08a008e0",
-            "allowed": true
-        }
-    ],
-    "vim.useSystemClipboard": true,
-    "vva.trustedDomain": true,
-    "redhat.telemetry.enabled": false,
-    "latex-workshop.view.pdf.viewer": "external",
-    "terminal.integrated.fontSize": 16,
-    "editor.semanticHighlighting.enabled": true,
-    "Lua.telemetry.enable": false,
-    "Lua.diagnostics.severity": {
-        "undefined-global": "Hint"
-    },
-    "java.project.importOnFirstTimeStartup": "disabled",
-    "editor.tokenColorCustomizations": {
-        "textMateRules": [
-            {
-                "scope": "text.html.markdown.journal.task.open.bullet",
-                "settings": {
-                    "foreground": "#FFFF00"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.task.open.marker",
-                "settings": {
-                    "foreground": "#FFFF00"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.task.open.keyword",
-                "settings": {
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.task.open.text",
-                "settings": {}
-            },
-            {
-                "scope": "text.html.markdown.journal.task.completed.keyword",
-                "settings": {
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.task.completed.marker",
-                "settings": {
-                    "foreground": "#AAAAAA"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.task.completed.text",
-                "settings": {
-                    "foreground": "#AAAAAA"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.task.completed.bullet",
-                "settings": {
-                    "foreground": "#FFFF00"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.memo.keyword",
-                "settings": {
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.memo.bullet",
-                "settings": {
-                    "foreground": "#FFFF00"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.scope",
-                "settings": {
-                    "foreground": "#FFFF00"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.link.keyword",
-                "settings": {
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "text.html.markdown.journal.link.bullet",
-                "settings": {
-                    "foreground": "#FFFF00"
-                }
-            },
-            {
-                "scope": "heading.1.markdown entity.name.section.markdown, heading.1.markdown punctuation.definition.heading.markdown",
-                "settings": {
-                    "foreground": "#de6a73",
-                    "fontStyle": "bold",
-                }
-            },
-            {
-                "scope": "heading.2.markdown entity.name.section.markdown, heading.2.markdown punctuation.definition.heading.markdown",
-                "settings": {
-                    "foreground": "#c678dd",
-                    "fontStyle": "bold",
-                }
-            },
-            {
-                "scope": "heading.3.markdown entity.name.section.markdown, heading.3.markdown punctuation.definition.heading.markdown",
-                "settings": {
-                    "foreground": "#98c379",
-                    "fontStyle": "bold",
-                }
-            },
-            {
-                "scope": "heading.4.markdown entity.name.section.markdown, heading.4.markdown punctuation.definition.heading.markdown",
-                "settings": {
-                    "foreground": "#e5c07a",
-                    "fontStyle": "bold",
-                }
-            }
-        ]
-    },
-    "journal.base": "/home/antihero/Documents/Journal",
-    "window.restoreWindows": "none",
-    "workbench.editor.untitled.hint": "hidden",
-    "files.associations": {
-        "/home/*/.config/i3/config": "i3",
-        "/home/*/.config/dunst/dunstrc": "properties",
-        "config": "i3"
-    },
-    "python.defaultInterpreterPath": "/usr/bin/python3",
-    "shellcheck.ignorePatterns": {
-        "**/*.py": true,
-        "**/*.zsh": true,
-        "**/*.zshrc": true,
-        "**/zshrc": true,
-        "**/*.zprofile": true,
-        "**/zprofile": true,
-        "**/*.zlogin": true,
-        "**/zlogin": true,
-        "**/*.zlogout": true,
-        "**/zlogout": true,
-        "**/*.zshenv": true,
-        "**/zshenv": true,
-        "**/*.zsh-theme": true
-    },
-    "cSpell.enableFiletypes": [
-        "!c",
-        "!cpp",
-        "!python"
-    ],
-    "python.formatting.provider": "autopep8",
-    "python.formatting.autopep8Args": [
-        "--max-line-length",
-        "122",
-        "--experimental"
-    ],
-    "indentRainbow.errorColor": "rgba(141,143,148,0.0)",
-    "terminal.integrated.fontFamily": "'VictorMono Nerd Font', 'JetBrainsMono Nerd Font'",
-    "C_Cpp.default.compilerPath": "/usr/bin/gcc",
-    "C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
-    "update.mode": "manual",
-    "files.watcherExclude": {
-      "**/.bloop": true,
-      "**/.metals": true,
-      "**/.ammonite": true
-    },
-    "extensions.ignoreRecommendations": true,
-    "notebook.cellToolbarLocation": {
-        "default": "right",
-        "jupyter-notebook": "left"
-    },
-    "editor.minimap.enabled": false,
-    "C_Cpp.intelliSenseCacheSize": 1024,
-    "zenMode.fullScreen": false,
-    "zenMode.centerLayout": false,
-    "zenMode.hideLineNumbers": false,
-    "terminal.explorerKind": "external",
-    "terminal.external.linuxExec": "alacritty",
-    "workbench.editor.languageDetection": false,
-    "window.zoomLevel": 1
+  "workbench.colorTheme": "One Dark Pro",
+  "window.menuBarVisibility": "toggle",
+  "editor.mouseWheelZoom": true,
+  "editor.fontFamily": "'VictorMono Nerd Font'",
+  "files.watcherExclude": {
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/.ammonite": true
+  },
+  "workbench.editor.languageDetection": false,
+  "keyboard.dispatch": "keyCode",
+  "colorize.include": [
+    "**/*.rasi",
+    "**/*.css",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.less",
+    "**/*.styl",
+    "**/palette/*",
+    "**/zathura/*"
+  ],
+  "latex-workshop.view.pdf.viewer": "external",
+  "latex-workshop.view.pdf.external.viewer.command": "zathura",
+  "window.zoomLevel": 1
 }
